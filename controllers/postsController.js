@@ -23,7 +23,7 @@ const handleNewPost = async (req, res) => {
     }
     const userId = foundUser.id
 
-    const post = await Post.create({ userId, title, body, 'author': email, authorProfilePicture: foundUser.profilePictureURL })
+    const post = await Post.create({ userId, title, body, 'author': email})
     if (post) {
         foundUser.userPostsId.push(post.id)
         await foundUser.save()
@@ -203,8 +203,7 @@ const handleComment = async (req, res) => {
 
     const comment = {
         author: email,
-        body: text,
-        authorProfilePicture: user.profilePictureURL
+        body: text
     }
 
     try {
