@@ -64,7 +64,7 @@ const handleUpdatePost = async (req, res) => {
 
 const handleDeletePost = async (req, res) => {
 
-    const { id } = req.body
+    const { id, email } = req.body
     // Confirm data
     if (!id) {
         return res.status(400).json({ message: 'Post ID Required' })
@@ -76,9 +76,13 @@ const handleDeletePost = async (req, res) => {
     if (!post) {
         return res.status(400).json({ message: 'Post not found' })
     }
-    if (post.author !== req.body.email) {
+    if (post.author !== email) {
         return res.status(401).json({ message: 'Unauthorized' })
     }
+    const user = await User.findOne({ email })
+    const postsArray = user.userPostsId.filter(postId => postId !== id)
+    user.userPostsId = postsArray
+    await user.save();
     await post.deleteOne()
 
     res.json({ message: 'Post deleted' })
