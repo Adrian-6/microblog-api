@@ -56,7 +56,6 @@ const authThroughGoogle = async (req, res) => {
                 email: userEmail,
                 profilePictureURL: userData.data.picture,
                 serviceProvider: 'google',
-                follows: userEmail
             })
             foundUser = await User.findOne({ email: userEmail })
         }
