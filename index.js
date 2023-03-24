@@ -8,7 +8,6 @@ const verifyJWT = require('./middleware/verifyJWT');
 
 app = express();
 
-
 const corsConfig = {
     credentials: true,
     origin: true,
