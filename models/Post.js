@@ -31,8 +31,7 @@ const postSchema = new mongoose.Schema({
         body: String,
         date: { type: Date, default: Date.now },
         upvotes: { type: Number, default: 0 },
-        upvotedBy: [{ type: String }],
-        authorProfilePicture: { type: String }
+        upvotedBy: [{ type: String }]
     }],
     upvotes: {
         type: Number,
@@ -45,8 +44,7 @@ const postSchema = new mongoose.Schema({
         required: true
     },
     upvotedBy: [{ type: String }],
-    sharedBy: [{ type: String }],
-    authorProfilePicture: { type: String }
+    sharedBy: [{ type: String }]
 })
 
 module.exports = mongoose.model('Post', postSchema)
