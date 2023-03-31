@@ -19,7 +19,7 @@ app.use(cookieParser())
 
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE, PATCH');
-    res.append('Access-Controll-Allow-Origin', 'https://microblog-wkeo.onrender.com')
+    res.set('Access-Controll-Allow-Origin', 'https://microblog-wkeo.onrender.com')
     next();
 });
 
