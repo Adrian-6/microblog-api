@@ -10,16 +10,16 @@ app = express();
 
 const corsConfig = {
     credentials: true,
-    origin: 'https://microblog-wkeo.onrender.com',
     optionSuccessStatus: 200,
 };
-app.use(cors(corsConfig));
+app.use(cors());
 
 app.use(bodyParser.json())
 app.use(cookieParser())
 
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE, PATCH');
+    res.append('Access-Controll-Allow-Origin', ['https://microblog-wkeo.onrender.com'])
     next();
 });
 
