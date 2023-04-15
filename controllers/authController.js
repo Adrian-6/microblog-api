@@ -85,12 +85,6 @@ const authThroughGoogle = async (req, res) => {
 
         if (cookies?.jwt) {
 
-            /* 
-            Scenario added here: 
-                1) User logs in but never uses RT and does not logout 
-                2) RT is stolen
-                3) If 1 & 2, reuse detection is needed to clear all RTs when user logs in
-            */
             const refreshToken = cookies.jwt;
             const foundToken = await User.findOne({ refreshToken }).exec();
 
