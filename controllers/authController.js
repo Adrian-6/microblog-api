@@ -102,7 +102,7 @@ const authThroughGoogle = async (req, res) => {
         await foundUser.save();
 
         // Creates Secure Cookie with refresh token
-        res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 24 * 60 * 60 * 1000 });
 
         // Send access token to user
         res.json({ accessToken });
@@ -173,7 +173,7 @@ const handleLogin = async (req, res) => {
     await foundUser.save();
 
     // Creates Secure Cookie with refresh token
-    res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+    res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 24 * 60 * 60 * 1000 });
 
     // Send authorization roles and access token to user
     res.json({ accessToken });
