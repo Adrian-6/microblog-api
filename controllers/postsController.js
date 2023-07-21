@@ -300,9 +300,6 @@ const handlePostVote = async (req, res) => {
     return res.json({ message: 'voted' })
 }
 
-
-
-
 module.exports = {
     getAllPosts,
     handleNewPost,

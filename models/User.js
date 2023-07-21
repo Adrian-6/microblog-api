@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
     followedBy: [{ type: String }],
     userPostsId: { type: [String], required: true },
     refreshToken: [String],
-    profilePictureURL: { type: String, default: "https://pbs.twimg.com/profile_images/1387160097416220673/l_YU1b8L_400x400.jpg" },
+    profilePictureURL: { type: String, default: "https://cdn-icons-png.flaticon.com/512/166/166347.png?w=826&t=st=1679619593~exp=1679620193~hmac=f34a680fa3d7d06914e0740ef84f42370e0aa2e2b33c467a4a4d0392ec31250a" },
     serviceProvider: { type: String }
 })
 

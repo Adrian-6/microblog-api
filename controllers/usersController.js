@@ -32,7 +32,6 @@ const getAllUsers = async (req, res) => {
     res.json(users)
 }
 
-
 const register = async (req, res) => {
     const { username, password, email } = req.body;
     if (!username || !password || !email) {
@@ -45,9 +44,7 @@ const register = async (req, res) => {
     }
     //hash password
     const hashedPassword = await bcrypt.hash(password, 10)
-
     const userObject = { email, username, "password": hashedPassword }
-
     const user = await User.create(userObject)
 
     if (user) {
@@ -63,7 +60,6 @@ const updateUser = async (req, res) => {
     if (!id || !username) {
         return res.status(400).json({ message: 'All fields except password are required' })
     }
-
     // Does the user exist to update?
     const user = await User.findOne({ _id: id, email: email }).exec()
 
@@ -97,7 +93,6 @@ const deleteUser = async (req, res) => {
     if (!user || user.email !== email) {
         return res.status(400).json({ message: 'Unauthorized' })
     }
-
 
     const result = await user.deleteOne()
     await Post.deleteMany({ author: email })
@@ -157,8 +152,6 @@ const handleFollow = async (req, res) => {
     }
     return res.status(200).json({ message: `followed` })
 }
-
-//
 
 module.exports = {
     login,

@@ -50,7 +50,6 @@ const authThroughGoogle = async (req, res) => {
 
         if (!foundUser) {
 
-
             await User.create({
                 username: userData.data.name,
                 email: userEmail,
@@ -77,7 +76,6 @@ const authThroughGoogle = async (req, res) => {
             { expiresIn: '24h' }
         );
 
-        // Changed to let keyword
         let newRefreshTokenArray =
             !cookies?.jwt
                 ? foundUser.refreshToken

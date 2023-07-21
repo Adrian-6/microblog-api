@@ -10,7 +10,6 @@ const handleRefreshToken = async (req, res) => {
     const foundUser = await User.findOne({ refreshToken }).exec();
     // Detected refresh token reuse!
     if (!foundUser) {
-
         jwt.verify(
             refreshToken,
             process.env.REFRESH_TOKEN_SECRET,
@@ -25,7 +24,6 @@ const handleRefreshToken = async (req, res) => {
                     hackedUser.refreshToken = [];
                     const result = await hackedUser.save();
                 }
-
             }
         )
         return res.sendStatus(403); //Forbidden
@@ -69,7 +67,6 @@ const handleRefreshToken = async (req, res) => {
             const email = foundUser.email
             // Creates Secure Cookie with refresh token
             res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
-
             res.json({ accessToken, email })
         }
     );
